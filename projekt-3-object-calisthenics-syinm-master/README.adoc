@@ -1,0 +1,55 @@
+= Professionelle Softwareentwicklung: Projekt 3
+:icons: font
+:icon-set: fa
+
+IMPORTANT: Die Abgabefrist ist der 31.05.2019 um 20:00 Uhr (Ortszeit Düsseldorf).
+Eine *fristgerechte Abgabe in AUAS ist zwingend erforderlich*. Geben Sie am Besten sofort in AUAS ab, ihr Projekt muss nicht fertig sein.
+
+== Einführung
+
+In Projekt 3 wollen wir überprüfen, ob Sie objektorientierte Programmierung verstanden haben und in einem Beispiel umsetzen können. Dazu sollen Sie eine Variante des Marsrovers implementieren, das die Object Calisthenics Regeln aus der Vorlesung und aus dem beigefügten Dokument `regeln.adoc` respektieren.
+
+== Aufgabenstellung
+Sie sollen einen Rover wie in Projekt 1 unter Beachtung der in `regeln.adoc` aufgeführten Regeln umsetzen. Der Rover soll auf der Oberfläche eines mit Hindernissen übersähten Planeten fahren können, ohne mit einem Hindernis zu kollidieren. Im Gegensatz zu Projekt 1 wollen wir folgende Vereinfachungen annehmen:
+
+. Der Rover muss nur geradeaus fahren (also nicht rückwärts).
+. Der Rover muss sich nur im Uhrzeigersinn drehen können.
+. Der Rover bekommt sein Programm nicht als Text übergeben, sondern wird durch Methodenaufrufe gesteuert.
+. Die Ausgabe der Welt mit dem Rover soll ähnlich wie in Projekt 1 aussehen, muss aber nicht automatisch nach jedem Kommando erfolgen, sondern kann auch explizit per Methodenaufruf gestartet werden.
+. Etwa 25% der Planetenoberfläche sind mit Hindernissen belegt. Sie können das per Zufall generieren oder fest einkodieren. Wenn Sie einen Zufallsgenerator verwenden ist es *nicht* notwendig, einen Seed (wie in Projekt 1) setzen zu können.
+. Der Rover darf nicht über Hindernisse fahren.
+
+Punkt 1 und 2 sind keine Einschränkung der Handlungsfähigkeit des Rovers, da eine Implementierung der anderen Kommandos trivialerweise aus den vorgegebenen Kommandos abgeleitet werden kann (z.B. rückwärts = 2 Drehungen, vorwärts, zwei Drehungen)
+
+Wie Sie mit Punkt 3 und 4 umgehen, hängt von Ihrer Implementierung ab. Es muss irgendwo in ihrem Programm die Möglichkeit geben den Rover per Methodenaufruf zu bewegen bzw. zu drehen. Außerdem muss es möglich sein, den Planeten mit dem Rover per Methodenaufruf auszugeben. Implementieren Sie eine Beispielsequenz, die den Rover bewegt und den Planeten ausgibt in der main Methode des Programms.
+
+Bei diesem Projekt sind *ausnahmsweise keine externen Bibliotheken* erlaubt. Externe Bibliotheken sind solche, die Sie zum Beispiel per Grade als Dependency deklarieren, oder per jar Datei explizit inkludieren.
+
+IMPORTANT: Es ist eine ziemlich schlechte Idee, die Ergebnisse aus Projekt 1 zu verwenden. Starten Sie von vorne!
+
+== Abgabe (inhaltlich)
+
+Implementieren Sie den Rover unter strikter Beachtung der Object Calisthenics Regeln aus der Datei `regeln.adoc`.
+
+== Abgabe (organisatorisch/technisch)
+Sie geben das Projekt über GitHub ab, es zählt der letzte Commit vor der Abgabefrist.
+Zusätzlich zu der Abgabe über GitHub *müssen* wir noch einige Daten in AUAS von Ihnen bekommen, um die Korrektoren zuzuordnen. Geben Sie im Textfeld zum Projekt also die Daten in folgendem Format ab:
+
+```
+name: Ihr GitHub Username
+url: Die URL Ihres Repositories in dem Projekt 3 ist
+```
+
+Beispiel:
+```
+name: propratester
+url: https://github.com/hhu-propra1-ss-19/projekt-3-marsrover-propratester
+```
+
+Das Repository *muss* mit Hilfe des Classroom Links erzeugt werden und darf nicht geändert werden, d.h. die URL muss mit `https://github.com/hhu-propra1-ss-19/` beginnen.
+
+IMPORTANT: Nachbearbeitungen erfordern zwingend, dass es eine Abgabe in AUAS gibt. Es werden keine Nachreichungen angenommen (auch nicht gegen Joker).
+
+== Object Calisthenics Regeln
+
+Sie finden eine Übersicht der Regeln in der Datei link:regeln.adoc[regeln.adoc]
