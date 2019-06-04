@@ -1,11 +1,11 @@
 package rover;
 
-class Coordinate {
+public class Coordinate {
 
-    int hight;
-    int width;
+    public int hight;
+    public int width;
 
-    Coordinate(int hight, int width) {
+    public Coordinate(int hight, int width) {
         this.hight = hight;
         this.width = width;
     }

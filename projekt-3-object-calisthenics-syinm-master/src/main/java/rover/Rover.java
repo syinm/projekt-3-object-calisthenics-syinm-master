@@ -1,12 +1,15 @@
 package rover;
 
 
+import misc.ArrayCheck;
+
 class Rover {
 
-    Coordinate roverPosition = new Coordinate(9, 9);
+    Coordinate roverPosition = new Coordinate(9, 10);
+    Direction dircetion = new Direction("north");
 
     private void moveNorth(Mars mars) {
-        if (checkArrayNorth(mars) && checkStoneNorth(mars)) {
+        if (new ArrayCheck().checkArrayNorth(mars, roverPosition) && new Stone().checkStoneNorth(mars, roverPosition)) {
             new Mars().deleteOldRoverPosition(mars.mars, roverPosition);
             roverPosition.hight--;
             new Mars().newRoverPositionNorth(mars, roverPosition);
@@ -14,7 +17,7 @@ class Rover {
     }
 
     private void moveEast(Mars mars) {
-        if (checkArrayEast(mars) && checkStoneEast(mars)) {
+        if (new ArrayCheck().checkArrayEast(mars, roverPosition) && new Stone().checkStoneEast(mars, roverPosition)) {
             new Mars().deleteOldRoverPosition(mars.mars, roverPosition);
             roverPosition.width++;
             new Mars().newRoverPositionEast(mars, roverPosition);
@@ -22,7 +25,7 @@ class Rover {
     }
 
     private void moveSouth(Mars mars) {
-        if (checkArraySouth(mars) && checkStoneSouth(mars)) {
+        if (new ArrayCheck().checkArraySouth(mars, roverPosition) && new Stone().checkStoneSouth(mars, roverPosition)) {
             new Mars().deleteOldRoverPosition(mars.mars, roverPosition);
             roverPosition.hight++;
             new Mars().newRoverPositionSouth(mars, roverPosition);
@@ -30,64 +33,37 @@ class Rover {
     }
 
     private void moveWest(Mars mars) {
-        if (checkArrayWest(mars) && checkStoneWest(mars)) {
+        if (new ArrayCheck().checkArrayWest(mars, roverPosition) && new Stone().checkStoneWest(mars, roverPosition)) {
             new Mars().deleteOldRoverPosition(mars.mars, roverPosition);
             roverPosition.width--;
             new Mars().newRoverPositionWest(mars, roverPosition);
         }
     }
 
-    private boolean checkStoneNorth(Mars mars) {
-        return mars.mars[(roverPosition.hight) - 1][roverPosition.width].equals(" ");
-    }
-
-    private boolean checkStoneEast(Mars mars) {
-        return mars.mars[roverPosition.hight][(roverPosition.width) + 1].equals(" ");
-    }
-
-    private boolean checkStoneSouth(Mars mars) {
-        return mars.mars[(roverPosition.hight) + 1][roverPosition.width].equals(" ");
-    }
-
-    private boolean checkStoneWest(Mars mars) {
-        return mars.mars[roverPosition.hight][(roverPosition.width) - 1].equals(" ");
-    }
-
-    private boolean checkArrayNorth(Mars mars) {
-        return ((roverPosition.hight) - 1 < mars.field.fieldhight);
-    }
-
-    private boolean checkArrayEast(Mars mars) {
-        return ((roverPosition.width) + 1 < mars.field.fieldwidth);
-    }
-
-    private boolean checkArraySouth(Mars mars) {
-        return ((roverPosition.hight) + 1 < mars.field.fieldhight);
-    }
-
-    private boolean checkArrayWest(Mars mars) {
-        return ((roverPosition.width) - 1 < mars.field.fieldwidth);
-    }
-
     void turnRight(Mars mars) {
-        if ("^".equals(mars.mars[roverPosition.hight][roverPosition.width]))
+        if (dircetion.direction.equals("north")) {
             new Mars().roverFaceEast(mars, roverPosition);
-        else if (">".equals(mars.mars[roverPosition.hight][roverPosition.width]))
+            dircetion.direction = "east";
+        } else if (dircetion.direction.equals("east")) {
             new Mars().roverFaceSouth(mars, roverPosition);
-        else if ("v".equals(mars.mars[roverPosition.hight][roverPosition.width]))
+            dircetion.direction = "south";
+        } else if (dircetion.direction.equals("south")) {
             new Mars().roverFaceWest(mars, roverPosition);
-        else if ("<".equals(mars.mars[roverPosition.hight][roverPosition.width]))
+            dircetion.direction = "west";
+        } else if (dircetion.direction.equals("west")) {
             new Mars().roverFaceNorth(mars, roverPosition);
+            dircetion.direction = "north";
+        }
     }
 
     void moveForward(Mars mars) {
-        if ("^".equals(mars.mars[roverPosition.hight][roverPosition.width]))
+        if (dircetion.direction.equals("north"))
             moveNorth(mars);
-        else if (">".equals(mars.mars[roverPosition.hight][roverPosition.width]))
+        else if (dircetion.direction.equals("east"))
             moveEast(mars);
-        else if ("v".equals(mars.mars[roverPosition.hight][roverPosition.width]))
+        else if (dircetion.direction.equals("south"))
             moveSouth(mars);
-        else if ("<".equals(mars.mars[roverPosition.hight][roverPosition.width]))
+        else if (dircetion.direction.equals("west"))
             moveWest(mars);
     }
 }
